@@ -1,0 +1,568 @@
+{
+  "_meta": {
+    "note": "Enriched seed: 12 Yekaterinburg food suppliers, full 14-dimension checklist. true=confirmed, false=confirmed-absent, null=could-not-confirm (NEVER means 'no'). Built from web search + page fetches, 2026-06-29. Verify before production use.",
+    "city_scope": "Екатеринбург",
+    "dimensions": {
+      "high_discrimination": [
+        "wholesale_small",
+        "moq_rub/moq_kg",
+        "own_production",
+        "deferred_payment",
+        "delivery_own_transport/pickup/russia",
+        "docs"
+      ],
+      "standard": [
+        "categories",
+        "subcategories",
+        "city/district",
+        "free_delivery_over",
+        "next_day_delivery",
+        "edo",
+        "horeca",
+        "halal",
+        "clients"
+      ]
+    }
+  },
+  "suppliers": [
+    {
+      "id": "grossfood",
+      "name": "Гросс Фуд",
+      "city": "Екатеринбург",
+      "district": "Завокзальная / 8 Марта",
+      "categories": [
+        "Мясо и птица",
+        "Рыба и морепродукты",
+        "Овощи и фрукты",
+        "Заморозка",
+        "Бакалея",
+        "Молочка",
+        "Напитки"
+      ],
+      "subcategories": [
+        "говядина",
+        "свинина",
+        "курица",
+        "красная рыба",
+        "филе",
+        "замороженные овощи",
+        "крупы",
+        "консервация",
+        "кофе"
+      ],
+      "phone": "+7 (912) 642-22-05",
+      "email": "n.muzychenko@grossfood.ru",
+      "whatsapp": true,
+      "website": "https://ekat.grossfood.ru",
+      "source": "https://grossfood.ru/contacts/",
+      "address": "ул. 8 Марта, 12А, оф. 415 (склад: ул. Завокзальная, 13)",
+      "wholesale_small": true,
+      "moq_rub": 10000,
+      "moq_text": "Доставка от 10 000 ₽, самовывоз от 5 000 ₽",
+      "own_production": true,
+      "deferred_payment": true,
+      "delivery_own_transport": true,
+      "delivery_pickup": true,
+      "delivery_russia": true,
+      "docs": [
+        "Меркурий",
+        "ГОСТ",
+        "ВСД"
+      ],
+      "free_delivery_over": 10000,
+      "next_day_delivery": true,
+      "edo": true,
+      "horeca": true,
+      "halal": null,
+      "clients": [
+        "юрлица",
+        "ИП",
+        "физлица"
+      ],
+      "region": "Екатеринбург, Свердловская область (+ филиалы)",
+      "notes": "Официальный дистрибьютор HoReCa с 2004 г. >2000 SKU в 25 категориях, собственный склад класса А, программа лояльности."
+    },
+    {
+      "id": "ekvator",
+      "name": "Экватор",
+      "city": "Екатеринбург",
+      "district": "Армавирская",
+      "categories": [
+        "Овощи и фрукты",
+        "Заморозка"
+      ],
+      "subcategories": [
+        "свежие овощи",
+        "фрукты",
+        "зелень",
+        "грибы",
+        "сухофрукты",
+        "очищенные овощи в вакууме",
+        "заморозка (ягоды/овощи)",
+        "консервация"
+      ],
+      "phone": "+7 (922) 188-91-57",
+      "email": "torg196e@gmail.com",
+      "whatsapp": true,
+      "website": "https://ovosfrukt.ru",
+      "source": "https://ovosfrukt.ru/",
+      "address": "ул. Армавирская, 33",
+      "wholesale_small": null,
+      "moq_rub": 3000,
+      "moq_text": "Бесплатная доставка от 3000 ₽",
+      "own_production": false,
+      "deferred_payment": null,
+      "delivery_own_transport": true,
+      "delivery_pickup": null,
+      "delivery_russia": false,
+      "docs": [
+        "договор",
+        "3 степени проверки"
+      ],
+      "free_delivery_over": 3000,
+      "next_day_delivery": null,
+      "edo": true,
+      "horeca": true,
+      "halal": null,
+      "clients": [
+        "юрлица",
+        "ИП"
+      ],
+      "region": "Екатеринбург, Пышма, Березовский",
+      "notes": "Прямые поставки от производителей без посредников. >1000 наименований. Заморозка в коробках 10-11 кг. WhatsApp: +7 950 647-01-57."
+    },
+    {
+      "id": "fooddesk",
+      "name": "FoodDesk (Фуддеск)",
+      "city": "Екатеринбург",
+      "district": null,
+      "categories": [
+        "Овощи и фрукты",
+        "Заморозка",
+        "Бакалея"
+      ],
+      "subcategories": [
+        "яблоки",
+        "цитрусы",
+        "тропические фрукты",
+        "картофель",
+        "томаты",
+        "капуста",
+        "салатная зелень",
+        "замороженные овощи",
+        "консервы",
+        "джемы",
+        "соленья"
+      ],
+      "phone": null,
+      "email": null,
+      "whatsapp": null,
+      "website": "https://fooddesk.ru/ekaterinburg",
+      "source": "https://fooddesk.ru/ekaterinburg",
+      "address": null,
+      "wholesale_small": null,
+      "moq_rub": null,
+      "moq_text": null,
+      "own_production": null,
+      "deferred_payment": null,
+      "delivery_own_transport": true,
+      "delivery_pickup": null,
+      "delivery_russia": null,
+      "docs": null,
+      "free_delivery_over": null,
+      "next_day_delivery": null,
+      "edo": null,
+      "horeca": true,
+      "halal": null,
+      "clients": [
+        "юрлица"
+      ],
+      "region": "Екатеринбург, Свердловская область",
+      "notes": "Поставки для столовых, ресторанов, магазинов, торговых сетей. Ориентация на тендеры. Контакты — через форму на сайте (источник: каталог + сайт)."
+    },
+    {
+      "id": "alatau_ural",
+      "name": "Алатау Урал",
+      "city": "Екатеринбург",
+      "district": null,
+      "categories": [
+        "Мясо и птица"
+      ],
+      "subcategories": [
+        "индейка",
+        "говядина",
+        "мясо птицы",
+        "полуфабрикаты"
+      ],
+      "phone": "+7 (902) 500-36-37",
+      "email": "info@alatay.ru",
+      "whatsapp": null,
+      "website": "https://alatay.ru",
+      "source": "https://alatay.ru/",
+      "address": null,
+      "wholesale_small": null,
+      "moq_rub": null,
+      "moq_text": null,
+      "own_production": null,
+      "deferred_payment": null,
+      "delivery_own_transport": true,
+      "delivery_pickup": null,
+      "delivery_russia": null,
+      "docs": null,
+      "free_delivery_over": null,
+      "next_day_delivery": null,
+      "edo": null,
+      "horeca": null,
+      "halal": null,
+      "clients": null,
+      "region": "Екатеринбург",
+      "notes": "Оптово-розничные продажи мяса индейки, говядины, птицы, полуфабрикатов. Возможна индивидуальная порционная упаковка под клиента. Охлаждённое и замороженное."
+    },
+    {
+      "id": "ihlas",
+      "name": "ГК «Ихлас»",
+      "city": "Екатеринбург",
+      "district": null,
+      "categories": [
+        "Мясо и птица"
+      ],
+      "subcategories": [
+        "птица",
+        "баранина",
+        "говядина"
+      ],
+      "phone": null,
+      "email": null,
+      "whatsapp": null,
+      "website": null,
+      "source": "https://meatinfo.ru/litecat/myasnye_kompanii_v_sverdlovskoy_oblasti",
+      "address": "производственный цех в Екатеринбурге",
+      "wholesale_small": null,
+      "moq_rub": null,
+      "moq_text": null,
+      "own_production": true,
+      "deferred_payment": null,
+      "delivery_own_transport": null,
+      "delivery_pickup": null,
+      "delivery_russia": null,
+      "docs": [
+        "Халяль"
+      ],
+      "free_delivery_over": null,
+      "next_day_delivery": null,
+      "edo": null,
+      "horeca": null,
+      "halal": true,
+      "clients": null,
+      "region": "Екатеринбург, Свердловская область",
+      "notes": "С 2010 г., халяль-продукция собственного производства. ИНН 6670357159. Контакты через каталог meatinfo.ru."
+    },
+    {
+      "id": "myasnoy_hutorok",
+      "name": "Мясной Хуторок",
+      "city": "Екатеринбург",
+      "district": "4 точки (Бебеля, Халтурина, Шаманова, Московская)",
+      "categories": [
+        "Мясо и птица"
+      ],
+      "subcategories": [
+        "охлаждённое мясо",
+        "утка",
+        "гусь",
+        "кролик",
+        "деликатесы",
+        "специи",
+        "соусы",
+        "консервация",
+        "напитки"
+      ],
+      "phone": "+7 (953) 383-59-05",
+      "email": "mhutorok@mail.ru",
+      "whatsapp": null,
+      "website": "https://мясной-хуторок.рф",
+      "source": "https://xn----qtbeffgcareplz8k.xn--p1ai/",
+      "address": "ул. Бебеля, 136 (+ ещё 3 точки)",
+      "wholesale_small": true,
+      "moq_rub": null,
+      "moq_text": null,
+      "own_production": true,
+      "deferred_payment": null,
+      "delivery_own_transport": true,
+      "delivery_pickup": true,
+      "delivery_russia": false,
+      "docs": [
+        "без ГМО",
+        "собственное производство"
+      ],
+      "free_delivery_over": null,
+      "next_day_delivery": null,
+      "edo": null,
+      "horeca": null,
+      "halal": null,
+      "clients": [
+        "юрлица",
+        "физлица"
+      ],
+      "region": "Екатеринбург",
+      "notes": "Охлаждённое мясо высокого качества, собственные деликатесы без ГМО. 4 точки продаж в городе. Опт и розница."
+    },
+    {
+      "id": "nash_souz",
+      "name": "ООО «Наш Союз»",
+      "city": "Екатеринбург",
+      "district": null,
+      "categories": [
+        "Мясо и птица",
+        "Молочка"
+      ],
+      "subcategories": [
+        "колбасы",
+        "деликатесы",
+        "сырная гастрономия",
+        "твёрдые/плавленые сыры",
+        "молочная продукция",
+        "масложировая группа"
+      ],
+      "phone": "+7 (343) 379-55-91",
+      "email": null,
+      "whatsapp": null,
+      "website": "https://nash-souz.ru",
+      "source": "https://nash-souz.ru/about/",
+      "address": null,
+      "wholesale_small": true,
+      "moq_rub": null,
+      "moq_text": null,
+      "own_production": false,
+      "deferred_payment": true,
+      "delivery_own_transport": true,
+      "delivery_pickup": null,
+      "delivery_russia": null,
+      "docs": [
+        "ГОСТ",
+        "сертификаты"
+      ],
+      "free_delivery_over": null,
+      "next_day_delivery": null,
+      "edo": true,
+      "horeca": true,
+      "halal": null,
+      "clients": [
+        "юрлица",
+        "ИП"
+      ],
+      "region": "Уральский регион",
+      "notes": "Крупный дистрибьютор: сырная/мясная гастрономия, молочка, масложировая группа. VIP-цены, отсрочка, ЭДО. Склады с холодильным оборудованием."
+    },
+    {
+      "id": "milco",
+      "name": "MILCO (ООО «Милко»)",
+      "city": "Екатеринбург",
+      "district": "Ангарская",
+      "categories": [
+        "Молочка"
+      ],
+      "subcategories": [
+        "сыр",
+        "сливочное масло",
+        "молочная продукция"
+      ],
+      "phone": "8 (800) 100-11-51",
+      "email": null,
+      "whatsapp": null,
+      "website": "https://milco.group/molochnye-zavody-ekaterinburg",
+      "source": "https://milco.group/molochnye-zavody-ekaterinburg",
+      "address": "ул. Ангарская, 75 (склад)",
+      "wholesale_small": false,
+      "moq_rub": null,
+      "moq_text": "Сыр — от 600 кг, масло — от 600 кг",
+      "moq_kg": 600,
+      "own_production": true,
+      "deferred_payment": null,
+      "delivery_own_transport": null,
+      "delivery_pickup": true,
+      "delivery_russia": true,
+      "docs": null,
+      "free_delivery_over": null,
+      "next_day_delivery": null,
+      "edo": null,
+      "horeca": null,
+      "halal": null,
+      "clients": [
+        "юрлица"
+      ],
+      "region": "Екатеринбург, РФ, СНГ",
+      "notes": "Производитель молочной продукции. Один из немногих с явным минимальным объёмом (в кг). Срок хранения скоропорта до 30 дней."
+    },
+    {
+      "id": "bakaleya_ekb",
+      "name": "ООО «Бакалея»",
+      "city": "Екатеринбург",
+      "district": "Артинская",
+      "categories": [
+        "Бакалея"
+      ],
+      "subcategories": [
+        "крупы",
+        "мука",
+        "сахар",
+        "соль",
+        "макароны"
+      ],
+      "phone": "+7 (343) 286-52-14",
+      "email": null,
+      "whatsapp": null,
+      "website": "https://bakaleya-ekb.ru",
+      "source": "https://bakaleya-ekb.ru/",
+      "address": "ул. Артинская, 6",
+      "wholesale_small": null,
+      "moq_rub": null,
+      "moq_text": null,
+      "own_production": false,
+      "deferred_payment": null,
+      "delivery_own_transport": true,
+      "delivery_pickup": null,
+      "delivery_russia": null,
+      "docs": [
+        "ГОСТ",
+        "Диадок"
+      ],
+      "free_delivery_over": null,
+      "next_day_delivery": null,
+      "edo": true,
+      "horeca": true,
+      "halal": null,
+      "clients": [
+        "юрлица"
+      ],
+      "region": "Екатеринбург",
+      "notes": "С 2016 г. Поставки для школ, детских садов, магазинов, общепита. Крупы, мука, бакалея. Документооборот через Диадок. Второй тел: +7 908 637-22-31."
+    },
+    {
+      "id": "sistema",
+      "name": "ПО «Система»",
+      "city": "Екатеринбург",
+      "district": "Комсомольская (база Екатеринбургобщепит)",
+      "categories": [
+        "Бакалея",
+        "Овощи и фрукты"
+      ],
+      "subcategories": [
+        "крупы",
+        "зерно",
+        "макароны",
+        "мука",
+        "масло",
+        "с/х продукция"
+      ],
+      "phone": null,
+      "email": null,
+      "whatsapp": null,
+      "website": null,
+      "source": "https://www.optomtovar.ru/optom-bakaleya-krupy/ekaterinburg",
+      "address": "ул. Комсомольская, 71а, база «Екатеринбургобщепит»",
+      "wholesale_small": null,
+      "moq_rub": null,
+      "moq_text": null,
+      "own_production": true,
+      "deferred_payment": null,
+      "delivery_own_transport": true,
+      "delivery_pickup": true,
+      "delivery_russia": true,
+      "docs": [
+        "импорт/экспорт ТС"
+      ],
+      "free_delivery_over": null,
+      "next_day_delivery": null,
+      "edo": null,
+      "horeca": true,
+      "halal": null,
+      "clients": [
+        "юрлица"
+      ],
+      "region": "Екатеринбург, регионы РФ, Таможенный союз",
+      "notes": "Продукты собственного производства и партнёров. Инвестирует в отечественное с/х. На базе «Екатеринбургобщепит». Авторефрижераторы. Контакты — через базу/каталог."
+    },
+    {
+      "id": "rm_pack",
+      "name": "RM-Pack",
+      "city": "Екатеринбург",
+      "district": null,
+      "categories": [
+        "Упаковка и расходники"
+      ],
+      "subcategories": [
+        "пищевая упаковка",
+        "одноразовая посуда",
+        "экоупаковка",
+        "бытовая химия",
+        "перчатки"
+      ],
+      "phone": "8 (800) 333-07-08",
+      "email": null,
+      "whatsapp": null,
+      "website": "https://rm-pack.ru",
+      "source": "https://rm-pack.ru/",
+      "address": null,
+      "wholesale_small": null,
+      "moq_rub": null,
+      "moq_text": null,
+      "own_production": false,
+      "deferred_payment": null,
+      "delivery_own_transport": true,
+      "delivery_pickup": null,
+      "delivery_russia": false,
+      "docs": null,
+      "free_delivery_over": null,
+      "next_day_delivery": null,
+      "edo": null,
+      "horeca": true,
+      "halal": null,
+      "clients": [
+        "юрлица"
+      ],
+      "region": "УрФО, ХМАО, ЯНАО",
+      "notes": "С 1999 г. Пищевая упаковка, одноразовая посуда, экоупаковка, бытовая химия, перчатки. Отечественные и зарубежные производители."
+    },
+    {
+      "id": "ultrapak",
+      "name": "ТПК «Ультрапак»",
+      "city": "Екатеринбург",
+      "district": "Ереванская",
+      "categories": [
+        "Упаковка и расходники"
+      ],
+      "subcategories": [
+        "стрейч-плёнка",
+        "скотч",
+        "гофрокартон",
+        "перчатки х/б",
+        "рукавицы"
+      ],
+      "phone": "+7 (908) 90-40-500",
+      "email": null,
+      "whatsapp": null,
+      "website": "https://upak66.ru",
+      "source": "https://upak66.ru/",
+      "address": "ул. Ереванская, 2Б",
+      "wholesale_small": true,
+      "moq_rub": null,
+      "moq_text": null,
+      "own_production": true,
+      "deferred_payment": null,
+      "delivery_own_transport": null,
+      "delivery_pickup": true,
+      "delivery_russia": true,
+      "docs": null,
+      "free_delivery_over": null,
+      "next_day_delivery": null,
+      "edo": null,
+      "horeca": null,
+      "halal": null,
+      "clients": [
+        "юрлица"
+      ],
+      "region": "Екатеринбург, Свердловская область, РФ",
+      "notes": "Собственное производство упаковочных материалов и расходников. Дежурный менеджер круглосуточно. Особые условия для оптовых клиентов."
+    }
+  ]
+}

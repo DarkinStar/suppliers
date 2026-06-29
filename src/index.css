@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
+
+:root {
+  /* Palette — dark, indigo accent (echoes Part 1) */
+  --bg: #0c0d12;
+  --bg-elev: #14161e;
+  --bg-elev-2: #1b1e29;
+  --border: #262a38;
+  --border-soft: #1f2330;
+  --text: #e8e9ee;
+  --text-dim: #9aa0b0;
+  --text-faint: #646b7e;
+  --accent: #6366f1;
+  --accent-soft: #4f46e5;
+  --accent-faint: rgba(99, 102, 241, 0.12);
+  --accent-border: rgba(99, 102, 241, 0.35);
+  --green: #34d399;
+  --green-faint: rgba(52, 211, 153, 0.12);
+
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --radius: 12px;
+  --radius-sm: 8px;
+  --sidebar-w: 30%;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root { height: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
