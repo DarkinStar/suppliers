@@ -1,16 +1,44 @@
-# React + Vite
+# Поиск поставщиков продуктов · Екатеринбург
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Сервис для поиска и сравнения поставщиков продуктов питания (Часть 2 тестового задания).
+Vite + React, чат на Claude Haiku через Vercel serverless function.
 
-Currently, two official plugins are available:
+## Возможности
+- Боковая панель с фильтрами (категория — мультивыбор, город, тип поставщика, доставка, общепит, халяль)
+- Чат: опишите запрос обычным языком → ИИ извлекает фильтры и задаёт уточняющий вопрос
+- Карточки поставщиков → подробное окно со всеми данными
+- Избранное (сохраняется в браузере, localStorage)
+- Сравнение до 3 поставщиков рядом
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Локальный запуск
+```bash
+npm install
+npm run dev
+```
+Чат локально работать НЕ будет без serverless-функции — нужен либо `vercel dev`, либо деплой (см. ниже).
 
-## React Compiler
+## Запуск чата локально (опционально)
+```bash
+npm i -g vercel
+vercel dev          # поднимает и фронт, и /api/chat
+```
+Потребуется переменная окружения `ANTHROPIC_API_KEY` (vercel dev спросит или возьмёт из проекта).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Деплой на Vercel
+1. Создайте новый репозиторий на GitHub и запушьте этот проект.
+2. На vercel.com → **Add New → Project** → импортируйте репозиторий.
+3. Framework определится автоматически как **Vite**. Build command и output (`dist`) уже заданы в `vercel.json`.
+4. В **Settings → Environment Variables** добавьте:
+   - `ANTHROPIC_API_KEY` = ваш ключ Anthropic (начинается с `sk-ant-...`)
+5. Нажмите **Deploy**.
 
-## Expanding the Oxlint configuration
+После деплоя чат заработает: фронтенд вызывает `/api/chat`, функция обращается к Claude и возвращает `{ filters, reply }`.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Где что лежит
+- `src/data.js` — поставщики, опции фильтров, логика фильтрации
+- `src/suppliers.json` — база поставщиков (12 шт., Екатеринбург)
+- `src/Modals.jsx` — окно поставщика и окно сравнения
+- `api/chat.js` — serverless-функция: текст → `{filters, reply}`. Системный промпт и список категорий здесь же.
+
+## Важно про данные
+Поля со значением `null` показываются как «не указано». Это честно: данные собраны из открытых источников и местами неполны. В продакшене база периодически переобогащается.

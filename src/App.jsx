@@ -108,6 +108,12 @@ export default function App() {
   const [detailId, setDetailId] = useState(null);
   const [compareOpen, setCompareOpen] = useState(false);
 
+  // chat
+  const [chatLog, setChatLog] = useState([]); // [{role, text}]
+  const [chatInput, setChatInput] = useState("");
+  const [chatBusy, setChatBusy] = useState(false);
+  const [chatError, setChatError] = useState(null);
+
   const results = useMemo(() => applyFilters(SUPPLIERS, filters), [filters]);
 
   const toggleCategory = (cat) =>
@@ -134,6 +140,59 @@ export default function App() {
     });
   const removeCompare = (id) =>
     setCompareIds((c) => c.filter((x) => x !== id));
+
+  // chat → /api/chat → replace filters with returned set
+  const sendChat = async () => {
+    const text = chatInput.trim();
+    if (!text || chatBusy) return;
+
+    const nextLog = [...chatLog, { role: "user", text }];
+    setChatLog(nextLog);
+    setChatInput("");
+    setChatBusy(true);
+    setChatError(null);
+
+    // Build message history for the API (role/content pairs).
+    const apiMessages = nextLog.map((m) => ({
+      role: m.role === "user" ? "user" : "assistant",
+      content: m.text,
+    }));
+
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ messages: apiMessages }),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+
+      // Replace filters wholesale with the AI's complete current picture.
+      if (data.filters && typeof data.filters === "object") {
+        setFilters({
+          categories: Array.isArray(data.filters.categories)
+            ? data.filters.categories
+            : [],
+          city: data.filters.city || "any",
+          producer: data.filters.producer || "any",
+          delivery: data.filters.delivery || "any",
+          horeca: data.filters.horeca || "any",
+          halal: data.filters.halal || "any",
+        });
+        setTab("filters"); // show the updated filters
+      }
+
+      setChatLog([
+        ...nextLog,
+        { role: "assistant", text: data.reply || "Готово." },
+      ]);
+    } catch (err) {
+      setChatError("Не удалось связаться с ассистентом. Попробуйте ещё раз.");
+      setChatLog(nextLog); // keep the user message, drop the failed reply
+    } finally {
+      setChatBusy(false);
+    }
+  };
 
   const openDetail = (id) => {
     setDetailId(id);
@@ -306,21 +365,55 @@ export default function App() {
 
         <div className="chat">
           <div className="chat-msgs">
-            <div className="chat-hint">
-              <span className="ai-dot">AI</span>
-              <span>
-                Опишите, что вам нужно — например, «мясо для ресторана в
-                Екатеринбурге с доставкой». Я подберу и отсортирую поставщиков.
-                <br />
-                <span style={{ color: "var(--text-faint)", fontSize: 12 }}>
-                  (Чат подключим позже — пока пользуйтесь фильтрами слева.)
+            {chatLog.length === 0 ? (
+              <div className="chat-hint">
+                <span className="ai-dot">AI</span>
+                <span>
+                  Опишите, что вам нужно — например, «мясо для ресторана в
+                  Екатеринбурге с доставкой». Я подберу поставщиков и уточню
+                  детали.
                 </span>
-              </span>
-            </div>
+              </div>
+            ) : (
+              chatLog.map((m, i) =>
+                m.role === "user" ? (
+                  <div className="chat-msg user" key={i}>
+                    {m.text}
+                  </div>
+                ) : (
+                  <div className="chat-hint" key={i}>
+                    <span className="ai-dot">AI</span>
+                    <span>{m.text}</span>
+                  </div>
+                )
+              )
+            )}
+            {chatBusy && (
+              <div className="chat-hint">
+                <span className="ai-dot">AI</span>
+                <span style={{ color: "var(--text-faint)" }}>Подбираю…</span>
+              </div>
+            )}
+            {chatError && <div className="chat-err">{chatError}</div>}
           </div>
           <div className="chat-input-row">
-            <input className="chat-input" placeholder="Что ищете?" disabled />
-            <button className="chat-send" disabled>Отправить</button>
+            <input
+              className="chat-input"
+              placeholder="Что ищете?"
+              value={chatInput}
+              onChange={(e) => setChatInput(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") sendChat();
+              }}
+              disabled={chatBusy}
+            />
+            <button
+              className="chat-send active"
+              onClick={sendChat}
+              disabled={chatBusy || !chatInput.trim()}
+            >
+              Отправить
+            </button>
           </div>
         </div>
 
