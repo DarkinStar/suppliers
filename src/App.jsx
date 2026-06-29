@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import "./App.css";
 import {
   SUPPLIERS,
@@ -14,6 +14,7 @@ import {
 } from "./data";
 import { useLocalStorage } from "./useLocalStorage";
 import { DetailModal, CompareModal } from "./Modals";
+import { Tour, HelpButton } from "./Tour";
 
 const MAX_COMPARE = 3;
 const byId = Object.fromEntries(SUPPLIERS.map((s) => [s.id, s]));
@@ -108,6 +109,20 @@ export default function App() {
   const [detailId, setDetailId] = useState(null);
   const [compareOpen, setCompareOpen] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false); // mobile filters drawer
+
+  // onboarding tour — show once per browser, re-openable via help button
+  const [tourSeen, setTourSeen] = useLocalStorage("sf_tour_seen", false);
+  const [tourOpen, setTourOpen] = useState(false);
+
+  // open the tour automatically the first time a user lands
+  useEffect(() => {
+    if (!tourSeen) setTourOpen(true);
+  }, [tourSeen]);
+
+  const closeTour = () => {
+    setTourOpen(false);
+    if (!tourSeen) setTourSeen(true);
+  };
 
   // chat
   const [chatLog, setChatLog] = useState([]); // [{role, text}]
@@ -488,6 +503,10 @@ export default function App() {
           onOpenDetail={openDetail}
         />
       )}
+
+      {/* ── Onboarding ──────────────────────────── */}
+      {tourOpen && <Tour onClose={closeTour} />}
+      <HelpButton onClick={() => setTourOpen(true)} />
     </div>
   );
 }
