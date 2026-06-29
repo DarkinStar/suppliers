@@ -107,6 +107,7 @@ export default function App() {
   const [compareIds, setCompareIds] = useState([]); // React state — resets on tab close
   const [detailId, setDetailId] = useState(null);
   const [compareOpen, setCompareOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false); // mobile filters drawer
 
   // chat
   const [chatLog, setChatLog] = useState([]); // [{role, text}]
@@ -180,6 +181,7 @@ export default function App() {
           halal: data.filters.halal || "any",
         });
         setTab("filters"); // show the updated filters
+        setDrawerOpen(false); // on mobile, reveal the updated list
       }
 
       setChatLog([
@@ -211,8 +213,21 @@ export default function App() {
 
   return (
     <div className="app">
+      {/* mobile-only backdrop behind the drawer */}
+      <div
+        className={`drawer-backdrop ${drawerOpen ? "show" : ""}`}
+        onClick={() => setDrawerOpen(false)}
+      />
+
       {/* ── Sidebar ─────────────────────────────── */}
-      <aside className="sidebar">
+      <aside className={`sidebar ${drawerOpen ? "open" : ""}`}>
+        <button
+          className="drawer-close"
+          onClick={() => setDrawerOpen(false)}
+          aria-label="Закрыть"
+        >
+          ✕
+        </button>
         <div className="sidebar-head">
           <div className="brand">
             Поставщики<span className="dot">.</span>
@@ -351,6 +366,13 @@ export default function App() {
       {/* ── Main ────────────────────────────────── */}
       <main className="main">
         <div className="topbar">
+          <button
+            className="drawer-toggle"
+            onClick={() => setDrawerOpen(true)}
+          >
+            Фильтры
+            {activeCount > 0 && <span className="badge">{activeCount}</span>}
+          </button>
           <button
             className="compare-btn"
             onClick={() => setCompareOpen(true)}
