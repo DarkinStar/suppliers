@@ -5,7 +5,18 @@
 // History is sent each turn so the AI can interpret answers to its own questions.
 
 const MODEL = "claude-haiku-4-5-20251001";
+// --- Rate limiting (in-memory, per IP) ---
+const RATE_LIMIT = 20;          // max requests
+const RATE_WINDOW = 60 * 1000;  // per 60 seconds
+const hits = new Map();         // ip -> [timestamps]
 
+function rateLimited(ip) {
+  const now = Date.now();
+  const recent = (hits.get(ip) || []).filter((t) => now - t < RATE_WINDOW);
+  recent.push(now);
+  hits.set(ip, recent);
+  return recent.length > RATE_LIMIT;
+}
 // These enum values MUST match src/data.js exactly, or filtering breaks.
 const CATEGORIES = [
   "Мясо и птица",
@@ -62,7 +73,16 @@ export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
-
+ const ip =
+    req.headers["x-forwarded-for"]?.split(",")[0]?.trim() ||
+    req.socket?.remoteAddress ||
+    "unknown";
+  if (rateLimited(ip)) {
+    return res.status(429).json({
+      error: "rate_limited",
+      reply: "Слишком много запросов. Подождите немного и попробуйте снова.",
+    });
+  }
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
     return res.status(500).json({ error: "ANTHROPIC_API_KEY not configured" });
